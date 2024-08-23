@@ -25,7 +25,6 @@ inn = 4
 out = 4
 breathes = 3
 
-#  inlst = [ TAC, ':', PAUSE, ':']
 
 def make_code(times, string=True):
     code_list = list()
@@ -45,8 +44,8 @@ def make_code(times, string=True):
 
 in_list = make_code(times=inn, string=False)
 out_list = make_code(times=out, string=False)
-print("in: ", in_list)
-print("out: ", out_list)
+print("in: ", in_list, end='\n'*2)
+print("out: ", out_list, end='\n'*2)
 
 full_list = list()
 for full in range(breathes):
