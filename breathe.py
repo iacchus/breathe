@@ -21,8 +21,10 @@ PAUSE = SIGNAL_ARGS_STR.format(duration=DURATION_PAUSE,
 #  inn = 10
 #  out = 10
 #  breathes = 10
-inn = 4
 out = 4
+after_out_retention = 4
+inn = 4
+after_in_retention = 4
 breathes = 3
 
 
@@ -42,15 +44,24 @@ def make_code(times, string=True):
     else:
         return code_list
 
-in_list = make_code(times=inn, string=False)
 out_list = make_code(times=out, string=False)
-print("in: ", in_list, end='\n'*2)
-print("out: ", out_list, end='\n'*2)
+after_out_list = make_code(times=after_out_retention, string=False)
+in_list = make_code(times=inn, string=False)
+after_in_list = make_code(times=after_in_retention, string=False)
+
+pargs = {"end": "\n" * 2}
+
+print("in: ", in_list, **pargs)
+print("after in: ", after_in_list, **pargs)
+print("out: ", out_list, **pargs)
+print("after out: ", after_out_list, **pargs)
 
 full_list = list()
 for full in range(breathes):
-    full_list.extend(in_list)
     full_list.extend(out_list)
+    full_list.extend(after_out_list)
+    full_list.extend(in_list)
+    full_list.extend(after_in_list)
 
 full_str = " : ".join(full_list)
 
